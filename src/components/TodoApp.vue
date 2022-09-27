@@ -19,8 +19,10 @@
       </thead>
       <tbody v-for="(task, index) in tasks" :key="index">
         <tr>
-          <td>{{task.name}}</td>
-          <div @click="updateTask(index)">
+          <td>
+            <span :class="{'isActive': task.status === 'finished'}">{{task.name}}</span>
+          </td>
+          <div @click="updateTask(index)" :class="{'greenStatus': task.status === 'finished'}">
             <td id="btn" style="width: 6rem">{{task.status}}</td>
           </div>
           <td>
@@ -136,6 +138,10 @@ export default {
 
   .isActive{
     text-decoration: line-through;
+  }
+
+  .greenStatus{
+    color: green;
   }
 
 </style>
